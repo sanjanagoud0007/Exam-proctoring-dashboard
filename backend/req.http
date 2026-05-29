@@ -1,0 +1,63 @@
+### register user
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "Sanjana",
+    "email": "sanjana@gmail.com",
+    "password": "123456",
+    "role": "student"
+}
+
+### login user
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "sanjana@gmail.com",
+    "password": "123456"
+}
+
+### create exam(teacher/admin)
+POST http://localhost:5000/api/exams
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU1ZmYwYzUwOTQ4Mzg1ODQ5NGU1MiIsImlhdCI6MTc3ODczNzUwMSwiZXhwIjoxNzgxMzI5NTAxfQ.HG25OystoPA-0yyCRvUUVZpv4tqZ7QofxUtmA-uIOFI
+
+{
+    "title": "JavaScript Test",
+    "duration": 30,
+    "questions": [
+    {
+        "question": "What is Node.js?",
+        "options": ["Library", "Runtime", "Framework"],
+        "correctAnswer": "Runtime"
+    },
+    {
+        "question": "What is React?",
+        "options": ["Library", "Runtime", "Database"],
+        "correctAnswer": "Library"
+    }
+    ]
+}
+
+###get all exams
+GET http://localhost:5000/api/exams
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU1ZmYwYzUwOTQ4Mzg1ODQ5NGU1MiIsImlhdCI6MTc3ODczNzUwMSwiZXhwIjoxNzgxMzI5NTAxfQ.HG25OystoPA-0yyCRvUUVZpv4tqZ7QofxUtmA-uIOFI
+
+### get single exams
+GET http://localhost:5000/api/exams/6a056002c509483858494e53
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU1ZmYwYzUwOTQ4Mzg1ODQ5NGU1MiIsImlhdCI6MTc3ODczNzUwMSwiZXhwIjoxNzgxMzI5NTAxfQ.HG25OystoPA-0yyCRvUUVZpv4tqZ7QofxUtmA-uIOFI
+
+### submit exam
+POST http://localhost:5000/api/exams/submit
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU1ZmYwYzUwOTQ4Mzg1ODQ5NGU1MiIsImlhdCI6MTc3ODczNzUwMSwiZXhwIjoxNzgxMzI5NTAxfQ.HG25OystoPA-0yyCRvUUVZpv4tqZ7QofxUtmA-uIOFI
+
+{
+    "examId": "6a056002c509483858494e53",
+    "answers": ["Runtime","Library"]
+}
+
+### get student attempts
+GET http://localhost:5000/api/attempts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDU1ZmYwYzUwOTQ4Mzg1ODQ5NGU1MiIsImlhdCI6MTc3ODczNzUwMSwiZXhwIjoxNzgxMzI5NTAxfQ.HG25OystoPA-0yyCRvUUVZpv4tqZ7QofxUtmA-uIOFI

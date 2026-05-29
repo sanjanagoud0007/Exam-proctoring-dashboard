@@ -1,0 +1,12 @@
+{
+  "name": "exam-proctoring-frontend",
+  "private": true,
+  "description": "Run scripts from frontend/vite-project",
+  "scripts": {
+    "dev": "npm run dev --prefix vite-project",
+    "build": "npm run build --prefix vite-project",
+    "preview": "npm run preview --prefix vite-project",
+    "lint": "npm run lint --prefix vite-project",
+    "install:app": "npm install --prefix vite-project"
+  }
+}

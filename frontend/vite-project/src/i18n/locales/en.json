@@ -1,0 +1,19 @@
+{
+  "appName": "AI Exam Proctoring",
+  "login": "Sign in",
+  "dashboard": "Dashboard",
+  "results": "Results",
+  "leaderboard": "Leaderboard",
+  "startExam": "Start Exam",
+  "submitExam": "Submit Exam",
+  "violationsWarning": "Stay on this tab, fullscreen on, face visible. Max violations auto-submit.",
+  "attendanceTitle": "Attendance Verification",
+  "verifyFace": "Verify identity with webcam",
+  "lowRisk": "Low Risk",
+  "mediumRisk": "Medium Risk",
+  "highRisk": "High Risk",
+  "liveMonitoring": "Live Monitoring",
+  "activeSessions": "Active Sessions",
+  "themeLight": "Light",
+  "themeDark": "Dark"
+}

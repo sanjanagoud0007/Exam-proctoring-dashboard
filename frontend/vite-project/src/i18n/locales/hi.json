@@ -1,0 +1,19 @@
+{
+  "appName": "एआई परीक्षा प्रॉक्टरिंग",
+  "login": "साइन इन",
+  "dashboard": "डैशबोर्ड",
+  "results": "परिणाम",
+  "leaderboard": "लीडरबोर्ड",
+  "startExam": "परीक्षा शुरू करें",
+  "submitExam": "परीक्षा जमा करें",
+  "violationsWarning": "इस टैब पर रहें, फुलस्क्रीन और चेहरा दिखाई दे।",
+  "attendanceTitle": "उपस्थिति सत्यापन",
+  "verifyFace": "वेबकैम से पहचान सत्यापित करें",
+  "lowRisk": "कम जोखिम",
+  "mediumRisk": "मध्यम जोखिम",
+  "highRisk": "उच्च जोखिम",
+  "liveMonitoring": "लाइव मॉनिटरिंग",
+  "activeSessions": "सक्रिय सत्र",
+  "themeLight": "लाइट",
+  "themeDark": "डार्क"
+}

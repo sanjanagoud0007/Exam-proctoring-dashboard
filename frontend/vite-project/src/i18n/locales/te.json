@@ -1,0 +1,19 @@
+{
+  "appName": "ఏఐ పరీక్ష ప్రాక్టరింగ్",
+  "login": "సైన్ ఇన్",
+  "dashboard": "డాష్‌బోర్డ్",
+  "results": "ఫలితాలు",
+  "leaderboard": "లీడర్‌బోర్డ్",
+  "startExam": "పరీక్ష ప్రారంభించండి",
+  "submitExam": "పరీక్ష సమర్పించండి",
+  "violationsWarning": "ఈ ట్యాబ్‌లో ఉండండి, ఫుల్‌స్క్రీన్ మరియు ముఖం కనిపించాలి.",
+  "attendanceTitle": "హాజరు ధృవీకరణ",
+  "verifyFace": "వెబ్‌క్యామ్‌తో గుర్తింపు ధృవీకరించండి",
+  "lowRisk": "తక్కువ ప్రమాదం",
+  "mediumRisk": "మధ్యస్థ ప్రమాదం",
+  "highRisk": "అధిక ప్రమాదం",
+  "liveMonitoring": "లైవ్ మానిటరింగ్",
+  "activeSessions": "సక్రియ సెషన్లు",
+  "themeLight": "లైట్",
+  "themeDark": "డార్క్"
+}
