@@ -35,9 +35,11 @@ const allowedOrigins = (
   .split(",")
   .map((origin) => origin.trim());
 
+console.log("Allowed Origins:", allowedOrigins);
+
 app.use(
   cors({
-    origin: function (origin, callback) {
+    origin: (origin, callback) => {
       // Allow requests without origin
       if (!origin) {
         return callback(null, true);
@@ -49,10 +51,8 @@ app.use(
 
       console.log("Blocked Origin:", origin);
 
-      return callback(
-        new Error(`CORS blocked for origin: ${origin}`),
-        false
-      );
+      // Prevent crashing preflight requests
+      return callback(null, false);
     },
 
     credentials: true,
@@ -73,7 +73,8 @@ app.use(
   })
 );
 
-console.log("Allowed Origins:", allowedOrigins);
+// Explicitly handle browser preflight requests
+app.options("*", cors());
 
 /* ---------------- MIDDLEWARE ---------------- */
 
