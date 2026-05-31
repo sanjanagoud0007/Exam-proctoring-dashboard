@@ -19,7 +19,7 @@ import { initSocket } from "./sockets/socket.js";
 import { rateLimiter } from "./middleware/rateLimiter.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
-connectDB();
+await connectDB();
 
 const app = express();
 
