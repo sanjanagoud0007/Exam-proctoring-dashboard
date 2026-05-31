@@ -40,7 +40,8 @@ console.log("Allowed Origins:", allowedOrigins);
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests without origin
+
+      // allow requests without origin
       if (!origin) {
         return callback(null, true);
       }
@@ -51,7 +52,6 @@ app.use(
 
       console.log("Blocked Origin:", origin);
 
-      // Prevent crashing preflight requests
       return callback(null, false);
     },
 
@@ -73,8 +73,8 @@ app.use(
   })
 );
 
-// Explicitly handle browser preflight requests
-app.options("*", cors());
+// Handle browser preflight requests
+app.options(/.*/, cors());
 
 /* ---------------- MIDDLEWARE ---------------- */
 
@@ -140,13 +140,21 @@ const server = http.createServer(app);
 initSocket(server);
 
 const tryListen = (port) => {
+
   server.listen(port, () => {
+
     console.log(`Server running on port ${port}`);
-    console.log("Allowed Origins:", allowedOrigins);
+
+    console.log(
+      "Allowed Origins:",
+      allowedOrigins
+    );
   });
 
   server.on("error", (err) => {
+
     if (err.code === "EADDRINUSE") {
+
       console.warn(
         `Port ${port} in use, trying ${port + 1}...`
       );
@@ -154,8 +162,11 @@ const tryListen = (port) => {
       server.removeAllListeners("error");
 
       tryListen(port + 1);
+
     } else {
+
       console.error(err);
+
       process.exit(1);
     }
   });
