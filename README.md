@@ -39,7 +39,7 @@ ProctorAI is a production-level, recruitment-grade online exam proctoring platfo
 ### 5. Multi-User Dashboards
 - **Student Dashboard**: Browse assigned exams, check timer details, save progress drafts, see warnings, and view completed scores.
 - **Proctor Dashboard**: Manage students, assign exam credentials, view live grid streams, watch live warning feeds, and review statistics.
-- **Admin Dashboard**: Create exams, review system analytics charts (Recharts), check user accounts, approve or ban users, and review violation heatmaps.
+- **Admin Dashboard**: Create, edit, and delete exams, review system analytics charts (Recharts), check user accounts, approve or ban users, and review violation heatmaps.
 
 ---
 
@@ -80,7 +80,7 @@ Exam-proctoring-dashboard/
 │   ├── templates/          # Branded HTML email layouts
 │   ├── sockets/            # Live telemetry channels
 │   └── server.js           # Server startup script
-└── frontend/vite-project/
+└── frontend/
     ├── public/             # Static files
     └── src/
         ├── components/     # Inputs, warning blocks, navigation bars
@@ -110,7 +110,7 @@ npm run dev
 
 ### 2. Set Up Frontend
 ```bash
-cd ../frontend/vite-project
+cd ../frontend
 cp .env.example .env
 # Edit server endpoints: VITE_API_URL, VITE_SOCKET_URL
 npm install
@@ -136,7 +136,7 @@ Verify `ALLOW_SEED=true` is set in your backend `.env`, then:
 3. Add Environment variables (`MONGO_URI`, `JWT_SECRET`, `CLIENT_ORIGIN` matching your frontend Vercel URL, `ALLOW_SEED=false`).
 
 ### Frontend (Vercel / Netlify)
-1. Add a new project pointing to the repository, setting the root folder to `frontend/vite-project`.
+1. Add a new project pointing to the repository, setting the root folder to `frontend`.
 2. Select Vite template settings (Build command: `npm run build`, Output directory: `dist`).
 3. Set environment parameters (`VITE_API_URL` pointing to backend API, `VITE_SOCKET_URL` pointing to backend socket URL).
 

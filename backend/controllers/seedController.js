@@ -143,6 +143,88 @@ export const seedDatabase = async (req, res) => {
       questions: sampleQuestions("React"),
     });
 
+    // Seed Attempts
+    await Attempt.create([
+      {
+        studentId: students[0]._id, // Alice
+        examId: exam1._id,
+        answers: ["Core principle", "It improves maintainability", "Follow documentation and test", "Alice answer desc", "Alice answer code"],
+        score: 4,
+        cheatingScore: 5,
+        riskLevel: "Low Risk",
+        submitReason: "manual",
+        endTime: new Date(),
+        durationSeconds: 1200,
+        attendanceVerified: true,
+      },
+      {
+        studentId: students[1]._id, // Bob
+        examId: exam1._id,
+        answers: ["Core principle", "Unrelated term", "Skip validation", "", ""],
+        score: 1,
+        cheatingScore: 45,
+        riskLevel: "High Risk",
+        submitReason: "violations",
+        endTime: new Date(),
+        durationSeconds: 600,
+        attendanceVerified: true,
+      }
+    ]);
+
+    // Seed Proctor Logs (Violations)
+    await ProctorLog.create([
+      {
+        studentId: students[1]._id, // Bob
+        examId: exam1._id,
+        eventType: "Tab Switch",
+        description: "Tab switched away from exam screen",
+        score: 15,
+        timestamp: new Date(Date.now() - 8 * 60 * 1000),
+      },
+      {
+        studentId: students[1]._id, // Bob
+        examId: exam1._id,
+        eventType: "Tab Switch",
+        description: "Tab switched away from exam screen",
+        score: 15,
+        timestamp: new Date(Date.now() - 6 * 60 * 1000),
+      },
+      {
+        studentId: students[1]._id, // Bob
+        examId: exam1._id,
+        eventType: "Multiple Faces",
+        description: "Multiple people detected in webcam feed",
+        score: 10,
+        timestamp: new Date(Date.now() - 4 * 60 * 1000),
+      },
+      {
+        studentId: students[1]._id, // Bob
+        examId: exam1._id,
+        eventType: "Looking Away",
+        description: "Candidate looking away from screen",
+        score: 5,
+        timestamp: new Date(Date.now() - 2 * 60 * 1000),
+      },
+      {
+        studentId: students[0]._id, // Alice
+        examId: exam1._id,
+        eventType: "Looking Away",
+        description: "Candidate looking away from screen",
+        score: 5,
+        timestamp: new Date(Date.now() - 5 * 60 * 1000),
+      },
+    ]);
+
+    // Seed Active Exam Session
+    await ExamSession.create({
+      studentId: students[2]._id, // Carol
+      examId: exam2._id,
+      status: "active",
+      startedAt: new Date(Date.now() - 10 * 60 * 1000),
+      warnings: 1,
+      cheatingScore: 10,
+    });
+
     res.status(201).json({
       message: "Demo database seeded successfully",
       credentials: {
@@ -154,6 +236,9 @@ export const seedDatabase = async (req, res) => {
       counts: {
         users: 2 + students.length,
         exams: 2,
+        attempts: 2,
+        violations: 5,
+        activeSessions: 1,
       },
       exams: [exam1, exam2],
     });

@@ -474,3 +474,60 @@ export const verifyAttendance = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// ================= UPDATE EXAM =================
+export const updateExam = async (req, res) => {
+  try {
+    const {
+      title,
+      duration,
+      questions,
+      instructions,
+      negativeMarking,
+      negativeMarkValue,
+      startTime,
+      endTime,
+      maxViolations,
+      status,
+    } = req.body;
+
+    const exam = await Exam.findById(req.params.id);
+    if (!exam) {
+      return res.status(404).json({ message: "Exam not found" });
+    }
+
+    if (title !== undefined) exam.title = title.trim();
+    if (duration !== undefined) exam.duration = Number(duration);
+    if (questions !== undefined) exam.questions = questions;
+    if (instructions !== undefined) exam.instructions = instructions;
+    if (negativeMarking !== undefined) exam.negativeMarking = Boolean(negativeMarking);
+    if (negativeMarkValue !== undefined) exam.negativeMarkValue = Number(negativeMarkValue);
+    if (maxViolations !== undefined) exam.maxViolations = Number(maxViolations);
+    if (startTime !== undefined) exam.startTime = startTime ? new Date(startTime) : undefined;
+    if (endTime !== undefined) exam.endTime = endTime ? new Date(endTime) : undefined;
+    if (status !== undefined) exam.status = status;
+
+    await exam.save();
+    res.json(exam);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// ================= DELETE EXAM =================
+export const deleteExam = async (req, res) => {
+  try {
+    const exam = await Exam.findById(req.params.id);
+    if (!exam) {
+      return res.status(404).json({ message: "Exam not found" });
+    }
+    await exam.deleteOne();
+    await Attempt.deleteMany({ examId: req.params.id });
+    await ExamDraft.deleteMany({ examId: req.params.id });
+    await ProctorLog.deleteMany({ examId: req.params.id });
+
+    res.json({ message: "Exam and all associated data deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

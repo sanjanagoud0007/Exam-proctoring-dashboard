@@ -12,6 +12,8 @@ import {
   getExamForStudent,
   autosaveDraft,
   getDraft,
+  updateExam,
+  deleteExam,
 } from "../controllers/examController.js";
 
 import {
@@ -53,5 +55,11 @@ router.post("/:id/autosave", protect, autosaveDraft);
 router.get("/:id/draft", protect, getDraft);
 // Get Single Exam (admin/proctor full view)
 router.get("/:id", protect, getExamById);
+
+// Update Exam (admin/proctor only)
+router.put("/:id", protect, protectAdminOrProctor, updateExam);
+
+// Delete Exam (admin/proctor only)
+router.delete("/:id", protect, protectAdminOrProctor, deleteExam);
 
 export default router;
